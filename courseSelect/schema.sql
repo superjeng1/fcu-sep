@@ -1,0 +1,33 @@
+DROP TABLE IF EXISTS student;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS class;
+DROP TABLE IF EXISTS selection;
+
+CREATE TABLE student (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL
+);
+
+CREATE TABLE course (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  teacher_name TEXT NOT NULL,
+  description TEXT NOT NULL
+);
+
+CREATE TABLE class (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  course_id INTEGER NOT NULL,
+  timeOfDay INTEGER NOT NULL,
+  dayOfWeek INTEGER NOT NULL,
+  FOREIGN KEY (course_id) REFERENCES course (id)
+);
+
+CREATE TABLE selection (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  course_id INTEGER NOT NULL,
+  student_id INTEGER NOT NULL,
+  FOREIGN KEY (course_id) REFERENCES course (id)
+  FOREIGN KEY (student_id) REFERENCES student (id)
+);
