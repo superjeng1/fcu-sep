@@ -1,10 +1,8 @@
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
+    Blueprint, flash, redirect, render_template, request, url_for
 )
-from werkzeug.exceptions import abort
 
 from courseSelect.auth import login_required
-from courseSelect.db import get_db
 
 bp = Blueprint('search', __name__, url_prefix='/search')
 
@@ -22,7 +20,7 @@ def create():
         if error is not None:
             flash(error)
         else:
-            #db = get_db()
+            # db = get_db()
             # db.execute(
             #    'INSERT INTO post (title, body, author_id)'
             #    ' VALUES (?, ?, ?)',

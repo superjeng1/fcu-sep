@@ -16,11 +16,12 @@ def get_db():
     return g.db
 
 
-def close_db(e=None):
+def close_db():
     db = g.pop('db', None)
 
     if db is not None:
         db.close()
+
 
 def init_db():
     db = get_db()
@@ -35,6 +36,7 @@ def init_db_command():
     """Clear the existing data and create new tables."""
     init_db()
     click.echo('Initialized the database.')
+
 
 def init_app(app):
     app.teardown_appcontext(close_db)
