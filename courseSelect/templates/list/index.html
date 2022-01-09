@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}List{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  {% for class in classes %}
+  <div>
+    <h1>{{ class['name'] }} - {{ class['teacher_name'] }}</h1>
+  </div>
+  {% if not loop.last %}
+  {% endif %}
+{% endfor %}
+{% endblock %}

@@ -39,3 +39,6 @@ CREATE TABLE selection (
   FOREIGN KEY (course_id) REFERENCES course (id)
   FOREIGN KEY (student_id) REFERENCES student (id)
 );
+
+INSERT INTO selection (course_id, student_id) VALUES (0, 1);
+INSERT INTO selection (course_id, student_id) VALUES (1, 1);
