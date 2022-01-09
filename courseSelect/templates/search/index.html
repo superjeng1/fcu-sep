@@ -10,4 +10,22 @@
     <input id="name" name="name" required value="{{ request.form['name'] }}">
     <input type="submit" value="Search">
 </form>
+<table>
+    <thead>
+        <tr>
+            <th>編號</th>
+            <th>課程名稱</th>
+            <th>開課教師</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in courses %}
+        <tr>
+            <td>{{ course[0] }}</td>
+            <td>{{ course[1] }}</td>
+            <td>{{ course[2] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
