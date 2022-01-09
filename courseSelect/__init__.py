@@ -38,4 +38,7 @@ def create_app(test_config=None):
     from . import search
     app.register_blueprint(search.bp)
 
+    from . import list
+    app.register_blueprint(list.bp)
+
     return app

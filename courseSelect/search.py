@@ -9,7 +9,7 @@ bp = Blueprint('search', __name__, url_prefix='/search')
 
 @bp.route('/', methods=('GET', 'POST'))
 @login_required
-def create():
+def search():
     if request.method == 'POST':
         name = request.form['name']
         error = None
