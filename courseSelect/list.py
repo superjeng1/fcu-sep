@@ -12,12 +12,16 @@ bp = Blueprint('list', __name__, url_prefix='/list')
 @bp.route('/', methods=('GET', 'POST'))
 @login_required
 def list():
-    #db = get_db()
-    # db.execute(
-    #    'INSERT INTO post (title, body, author_id)'
-    #    ' VALUES (?, ?, ?)',
-    #    (title, body, g.user['id'])
-    # )
-    # db.commit()
+    db = get_db()
+    #posts = db.execute(
+    #    'SELECT p.id, title, body, created, author_id, username'
+    #    ' FROM post p JOIN user u ON p.author_id = u.id'
+    #    ' ORDER BY created DESC'
+    #).fetchall()
+    classes = db.execute(
+        'SELECT name, teacher_name FROM course WHERE id IN (SELECT course_id FROM selection WHERE student_id = ?)',
+        [g.user['id']]
+    ).fetchall()
 
-    return render_template('list/index.html')
+    return render_template('list/index.html', classes=classes)
+
