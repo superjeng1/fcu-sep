@@ -8,10 +8,11 @@ from courseSelect.db import get_db
 
 bp = Blueprint('search', __name__, url_prefix='/search')
 
+
 @bp.route('/', methods=('GET', 'POST'))
 @login_required
 def create():
-  if request.method == 'POST':
+    if request.method == 'POST':
         name = request.form['name']
         error = None
 
@@ -22,12 +23,12 @@ def create():
             flash(error)
         else:
             #db = get_db()
-            #db.execute(
+            # db.execute(
             #    'INSERT INTO post (title, body, author_id)'
             #    ' VALUES (?, ?, ?)',
             #    (title, body, g.user['id'])
-            #)
-            #db.commit()
+            # )
+            # db.commit()
             return redirect(url_for('search.index'))
 
     return render_template('search/index.html')
