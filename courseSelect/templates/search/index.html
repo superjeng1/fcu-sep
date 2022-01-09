@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h1>{% block title %}Search Course{% endblock %}</h1>
+<h1>{% block title %}搜尋課程{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
 <form method="post">
-    <label for="name">Course Name</label>
+    <label for="name">課程名稱</label>
     <input id="name" name="name" required value="{{ request.form['name'] }}">
     <input type="submit" value="Search">
 </form>
