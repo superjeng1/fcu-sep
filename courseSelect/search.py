@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, flash, render_template, request
+   Blueprint, flash, g, redirect, render_template, request, url_for
 )
 
 from courseSelect.auth import login_required
@@ -24,11 +24,8 @@ def index():
         else:
             db = get_db()
             courses = db.execute(
-                "SELECT * FROM course"
-                " WHERE name LIKE '%?%'"
-                " LIMIT 100",
-                name
+                'SELECT * FROM course WHERE name LIKE ? LIMIT 100',
+                ['%'+name+'%']
             )
-            return redirect(url_for('list.list'))
 
     return render_template('search/index.html', courses=courses)
