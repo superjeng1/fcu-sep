@@ -27,6 +27,6 @@ def search():
             #    (title, body, g.user['id'])
             # )
             # db.commit()
-            return redirect(url_for('search.index'))
+            return redirect(url_for('search.search'))
 
     return render_template('search/index.html')

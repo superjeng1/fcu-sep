@@ -24,4 +24,3 @@ def list():
     ).fetchall()
 
     return render_template('list/index.html', classes=classes)
-
